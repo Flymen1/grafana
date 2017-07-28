@@ -101,6 +101,7 @@ go get github.com/*your_account*/grafana
 mkdir $GOPATH/src/github.com/grafana
 ln -s  $GOPATH/src/github.com/*your_account*/grafana $GOPATH/src/github.com/grafana/grafana
 ```
+>如果你是clone自己的分支，在windows下使用 `cd $GOPATH/src/github.com/` `mklink /d grafana *your_account*`
 
 ### Building the backend
 ```bash
@@ -108,6 +109,7 @@ cd $GOPATH/src/github.com/grafana/grafana
 go run build.go setup
 go run build.go build
 ```
+> build go 在windows下提示需要gcc环境http://tdm-gcc.tdragon.net/download
 
 ### Building frontend assets
 
@@ -119,6 +121,9 @@ npm install -g yarn
 yarn install --pure-lockfile
 npm run build
 ```
+> yarn install 时sass需要python环境https://www.python.org/downloads/release/python-362/
+phantomjs下载失败时自行下载http://phantomjs.org/download.html，并配置PATH环境变量
+npm run build 时，在windows下需要修改 package.json 里的scripts 如 "build": "./node_modules/grunt-cli/bin/grunt" > "node node_modules/grunt-cli/bin/grunt"
 
 To build the frontend assets only on changes:
 
