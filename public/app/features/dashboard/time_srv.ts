@@ -175,10 +175,11 @@ class TimeSrv {
       urlParams.from = urlRange.from;
       urlParams.to = urlRange.to;
       this.$location.search(urlParams);
+      this.$timeout(this.refreshDashboard.bind(this), 0);
     }
 
     this.$rootScope.appEvent('time-range-changed', this.time);
-    this.$timeout(this.refreshDashboard.bind(this), 0);
+
   }
 
   timeRangeForUrl() {
